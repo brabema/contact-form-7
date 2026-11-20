@@ -26,11 +26,13 @@ export const freeTextHelper = (form) => {
       'input[type="checkbox"], input[type="radio"]',
     );
 
-    freetext.disabled = !checkbox.checked;
-
-    form.addEventListener("change", (event) => {
+    const updateFreeText = () => {
       freetext.disabled = !checkbox.checked;
-    });
+    };
+
+    updateFreeText();
+    form.addEventListener("change", updateFreeText);
+    form.addEventListener("wpcf7reset", updateFreeText);
   });
 };
 
